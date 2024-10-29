@@ -47,4 +47,4 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   return SetTime;
-};SetTime
+};

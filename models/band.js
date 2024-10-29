@@ -42,5 +42,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   })
 
-  return Band;
-};
+  return Band
+}
