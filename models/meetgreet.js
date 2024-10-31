@@ -10,9 +10,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "band_id",
         as: "band"
       })
+
+      // event
+      MeetGreet.belongsTo(Event, {
+        foreignKey: "event_id",
+        as: "event"
+      })
     }
-  }
-  
+
   }
   MeetGreet.init({
     meet_greet_id: {
@@ -21,20 +26,20 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     event_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     band_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     meet_start_time: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false
     },
     meet_end_time: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     sequelize,

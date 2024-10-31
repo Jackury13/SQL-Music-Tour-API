@@ -4,17 +4,26 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Stage extends Model {
-    static associate({ Event, StageEvent }) {
-      // events
-      Stage.belongsToMany(Event, {
+    static associate({ Band, Event, Stage }) {
+      // band
+      SetTime.belongsTo(Band, {
+        foreignKey: "band_id",
+        as: "band"
+      })
+
+      // event
+      SetTime.belongsTo(Event, {
+        foreignKey: "event_id",
+        as: "event"
+      })
+
+      // stage 
+      SetTime.belongsTo(Stage, {
         foreignKey: "stage_id",
-        as: "events",
-        through: StageEvent
+        as: "stage"
       })
     }
-  }
-  
-  }
+  };
   SetTime.init({
     set_time_id: {
       type: DataTypes.INTEGER,
@@ -22,24 +31,24 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     stage_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     band_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     event_id: {
       type: DataTypes.INTEGER,
-        allowNull: false
+      allowNull: false
     },
     start_time: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false
     },
     end_time: {
-        type: DataTypes.DATE,
-        allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     sequelize,
